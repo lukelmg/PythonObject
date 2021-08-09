@@ -13,8 +13,11 @@ while True:
     higher_blue = np.array([255, 255, 255])
     mask = cv2.inRange(rgb, lower_blue, higher_blue)
 
+    contours,hierachy=cv2.findContours(mask,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+    cv2.drawContours(frame, contours, -1, (0, 255, 0), 3)
+
     cv2.imshow("Frame", frame)
-    cv2.imshow("Mask", mask)
+    #cv2.imshow("Mask", mask)
 
     key = cv2.waitKey(1)
     if key == 27:
